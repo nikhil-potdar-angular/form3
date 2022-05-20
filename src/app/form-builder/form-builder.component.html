@@ -1,0 +1,50 @@
+<div class="card">
+    <form [formGroup]="reactiveForm" >
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">label</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="label"
+      formControlName="label"
+      name="label"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="inputState" class="form-label">Field Type </label>
+    <select id="inputState" formControlName="fieldType" name="fieldType" class="form-select">
+      <option selected>Choose...</option>
+      <option>Text</option>
+      <option>Textarea</option>
+      <option>Select</option>
+      <option>Checkbox</option>
+      <option>Radio</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="Name"
+      formControlName="name"
+      name="name"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label">Options</label>
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="Options"
+      formControlName="options"
+      name="options"
+    />
+  </div>
+  <button type="submit" (click)="onSubmit()" class="btn btn-primary">Submit</button>
+</form>
+
+</div>

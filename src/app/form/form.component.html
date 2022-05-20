@@ -1,0 +1,185 @@
+<!-- <div *ngIf="formData!=null" class="card">
+    <form [formGroup]="form" class="mt-5">
+  <div
+    formArrayName="items" class="mb-3"
+    *ngFor="let item of getFormArray()['controls']; let i = index"
+  >
+    <div class="main" [formGroupName]="i">
+        <form [formGroup]="formArray"> 
+     
+      <div *ngIf="item.value.fieldType == 'Text'" class="mb-1">
+           <label for="formGroupExampleInput" class="form-label">{{
+        item.value.label
+      }}</label>
+        <input 
+          [type]="item.value.fieldType"
+          class="form-control"
+          id="formGroupExampleInput"
+          placeholder="label"
+          [formControlName]="item.value.name"
+        />
+      </div>
+
+      <div *ngIf="item.value.fieldType == 'Textarea'" class="mb-1">
+           <label for="formGroupExampleInput" class="form-label">{{
+        item.value.label
+      }}</label>
+      
+        <textarea
+          class="form-control"
+          
+          placeholder="Leave a comment here"
+          id="floatingTextarea2"
+          style="height: 100px"
+          [formControlName]="item.value.name"
+        ></textarea>
+      </div>
+
+      <div *ngIf="item.value.fieldType == 'Select'" class="mb-1">
+           <label for="formGroupExampleInput" class="form-label">{{
+        item.value.label
+      }}</label>
+        <select class="form-select" 
+                [formControlName]="item.value.name"
+                aria-label="Default select example">
+          <option selected>Open this select menu</option>
+          <option *ngFor="let option of item.value.options.split(',')"value="">{{ option}}</option>
+          
+        </select>
+      </div>
+
+      <div *ngIf="item.value.fieldType == 'Radio'" class="mb-1">
+           <label for="formGroupExampleInput" class="form-label">{{
+        item.value.label
+      }}</label>
+        <div *ngFor="let op of item.value.options.split(',')" class="form-check">
+          <input
+            class="form-check-input"
+            [type]="item.value.fieldType"
+           
+            id="flexRadioDefault1"
+           [formControlName]="item.value.name"
+        />
+          <label  class="form-check-label" for="flexRadioDefault1">
+            {{op}}
+          </label>
+        </div>
+       
+      </div>
+
+      <div *ngIf="item.value.fieldType == 'Checkbox'" class="mb-1">
+           <label for="formGroupExampleInput" class="form-label">{{
+        item.value.label
+      }}</label>
+        <div *ngFor="let op of item.value.options.split(',')" class="form-check">
+          <input
+            class="form-check-input"
+            [type]="item.value.fieldType"
+            
+            id="flexRadioDefault1"
+            [formControlName]="item.value.name"
+            [checked]="item.value.checked"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            {{ op }}
+          </label>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+    <button *ngIf="formData!=null" class="btn btn-primary ms-4 mb-2" (click)="onSubmit()">Submit</button>
+</form>
+</div> -->
+
+<!-- temp driven form -->
+<div class="container">
+  <div *ngIf="formData!=null" class="card">
+    <form #submitForm="ngForm" (ngSubmit)="submit()" class="mt-5">
+      <div class="main" *ngFor="let item of arr">
+        <div *ngIf="item.fieldType == 'Text'" class="mb-2">
+          <label for="formGroupExampleInput" class="form-label">{{
+       item.label
+     }}</label>
+       <input 
+         [type]="item.fieldType"
+         class="form-control"
+         id="formGroupExampleInput"
+         placeholder="label"
+         [name]="item.name" ngModel
+       />
+     </div>
+  
+     <div *ngIf="item.fieldType == 'Textarea'" class="mb-2">
+          <label for="formGroupExampleInput" class="form-label">{{
+       item.label
+     }}</label>
+     
+       <textarea
+         class="form-control"
+        placeholder="Leave a comment here"
+         id="floatingTextarea2"
+         style="height: 100px"
+         [name]="item.name" ngModel
+       ></textarea>
+     </div>
+  
+     <div *ngIf="item.fieldType == 'Select'" class="mb-1">
+          <label for="formGroupExampleInput" class="form-label">{{
+       item.label
+     }}</label>
+       <select class="form-select" 
+         [name]="item.name" ngModel
+         aria-label="Default select example">
+         <option selected>Open this select menu</option>
+         <option *ngFor="let option of item.options.split(',')" [value]="option">{{ option}}</option>
+         </select>
+     </div>
+  
+     <div *ngIf="item.fieldType == 'Radio'" class="mb-1">
+          <label for="formGroupExampleInput" class="form-label">{{
+         item.label
+     }}</label>
+       <div *ngFor="let op of item.options.split(',')" class="form-check">
+         <input
+           class="form-check-input"
+           type="radio"
+           id="flexRadioDefault1"
+           [name]="item.name" 
+           [value]="op"
+           ngModel
+          />
+         <label  class="form-check-label" for="flexRadioDefault1">
+           {{op}}
+         </label>
+       </div>
+     </div> 
+  
+     <div *ngIf="item.fieldType == 'Checkbox'" class="mb-1">
+     <div>
+      <label for="formGroupExampleInput" class="form-label">{{
+        item.label
+      }}</label>
+        <div *ngFor="let op of item.options.split(',');let i=index" class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id=""
+            [name]="item.name" 
+            [value]="op"
+        
+            ngModel
+           (change)="checkBox(op,$event)"
+          />
+          <label class="form-check-label" for="flexRadioDefault1">
+            {{ op }}
+          </label>
+        </div>
+     </div>
+     </div>
+  
+      </div>
+      <button *ngIf="formData!=null" class="btn btn-primary ms-4 mb-2" >Submit</button>
+    </form>
+  </div>
+</div>
